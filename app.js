@@ -13,6 +13,11 @@
 		// Products
 		self.products = getProducts.getProducts();
 
+		// Cart
+		self.cart = getProducts.getCart();
+
+		// Add item Cart
+		self.addItem = getProducts.addItem();
 
 		// Filter
 		self.filter = {};
@@ -32,7 +37,10 @@
 	// Factory
 	app.factory("getProducts", [function(){
 		
+		// Placeholder
 		var placeholderImg = 'http://fakeimg.pl/250x100/';
+		
+		// itens Product
 		var _itensProducts = [
 			{
 				id: 1,
@@ -64,12 +72,47 @@
 			}
 	    ];
 
+	    // itens cart
+	    var _itensCart = [
+	    	{
+				id: 1,
+				name: "Nexus 6",
+				price: 1450.00,
+				photo: placeholderImg,
+				type: "wood"
+			}
+	    ];
+
+
 		var _getProdutcs = function(){
 			return _itensProducts;			
 		};
 
+		var _getCart = function(){
+			return _itensCart;			
+		};
+
+		var lastId = 4;
+
+		var _addItem = function(newItem){
+			console.log(newItem);
+			newItem = angular.extend(newItem, {
+				id: lastId + 1,
+				photo: placeholderImg
+			});
+
+			_itensCart.push(newItem);
+			lastId += 1;
+		};
+
+		function addItem(newItem) {
+			
+		}
+
 		return{
-			getProducts: _getProdutcs
+			getProducts: _getProdutcs,
+			getCart: _getCart,
+			addItem: _addItem,
 		}
 	}]);
 })();
