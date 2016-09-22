@@ -17,7 +17,7 @@
 		self.cart = getProducts.getCart();
 
 		// Add item Cart
-		self.addItem = getProducts.addItem();
+		//self.addItem = getProducts.addItem();
 
 		// Filter
 		self.filter = {};
