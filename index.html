@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Teste Angular</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<body ng-app="app" ng-controller="appCtrl as ctrl">
+
+	<div class="container">
+		{{ctrl.name}}
+
+		<br>
+		<br>
+
+		<div class="btn-group">
+			<button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Cart <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+			</button>
+			<div class="dropdown-menu">
+				<li class="dropdown-item" ><a href="#">item</a></li>
+				<div class="dropdown-divider"></div>
+				<li class="dropdown-item" ><a href="#">item</a></li>
+			</div>
+		</div>
+
+		<br>
+		<br>
+		
+		<form>
+			<fieldset class="form-group">
+				<legend>Filter</legend>
+				<div class="form-check">
+					<label class="form-check-label">
+						<input type="checkbox" class="form-check-input" name="wood" value="wood" ng-model="ctrl.filter['wood']">
+						wood
+					</label>
+				</div>
+				<div class="form-check">
+					<label class="form-check-label">
+						<input type="checkbox" class="form-check-input" name="iron" value="iron" ng-model="ctrl.filter['iron']">
+						iron
+					</label>
+				</div>
+			</fieldset>
+		</form>
+
+		<p><a href="#" class="btn btn-primary">See all products</a></p>
+
+		<div class="row">
+			<div class="col-sm-6 col-md-3" ng-repeat="product in ctrl.products | filter:ctrl.filterByCategory">
+				<div class="thumbnail">
+					<img src="{{product.photo}}">
+					<div class="caption">
+						<h3>{{ product.name }}</h3>
+						<p>{{ product.type }}</p>
+						<p>{{ product.price | currency }}</p>
+						<p><a href="#" class="btn btn-primary" role="button">By Now</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
